@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+    <script type="text/javascript">
+        var mR = 10;
+        var mH = 10;
+        var wynik = 100;
+        function myFunctionH() {
+            var H = Number(document.getElementById("fH").value);
+            mH = H;
+            H = H * 10;
+            H = H + 100;
+            var svgH = H + 100;
+            H.toString();
+            svgH.toString();
+            document.getElementsByTagName("ellipse")[0].setAttribute("cy",H);
+            document.getElementsByTagName("line")[0].setAttribute("y2",H);
+            document.getElementsByTagName("line")[1].setAttribute("y2",H);
+            document.getElementsByTagName("svg")[0].setAttribute("height",svgH);
+            wynik = mR * mH;
+            document.getElementById("math2").innerHTML = mH.toString();
+            document.getElementById("math3").innerHTML = wynik.toString();
+        }
+        function myFunctionR() {
+            var x = Number(document.getElementById("fR").value);
+            mR = x * x * 3.14;
+            x = x * 10;
+            var y = x * 0.35;
+            var l1x = Number(document.getElementsByTagName("ellipse")[1].getAttribute("cx")) - x;
+            var l2x = Number(document.getElementsByTagName("ellipse")[0].getAttribute("cx")) + x;
+            x.toString();
+            y.toString();
+            l1x.toString();
+            l2x.toString();
+            document.getElementsByTagName("ellipse")[0].setAttribute("rx",x);
+            document.getElementsByTagName("ellipse")[0].setAttribute("ry",y);
+            document.getElementsByTagName("ellipse")[1].setAttribute("rx",x);
+            document.getElementsByTagName("ellipse")[1].setAttribute("ry",y);
+            document.getElementsByTagName("line")[0].setAttribute("x1",l1x);
+            document.getElementsByTagName("line")[0].setAttribute("x2",l1x);
+            document.getElementsByTagName("line")[1].setAttribute("x1",l2x);
+            document.getElementsByTagName("line")[1].setAttribute("x2",l2x);
+            wynik = mR * mH;
+            document.getElementById("math1").innerHTML = mR.toString();
+            document.getElementById("math3").innerHTML = wynik.toString();
+        }
+
+    </script>
+</head>
+<body>
+<p><b>ZADANIE</b></p>
+<p>Oblicz objętość walca o wysokości H, gdzie podstawa to koło o promieniu r</p>
+<p><b>DANE WEJŚCIOWE</b></p>
+H: <input type="text" id="fH" onchange="myFunctionH()" value="10">
+r: <input type="text" id="fR" onchange="myFunctionR()" value="10">
+<p><b>RYSUNEK</b></p>
+<svg height="300" width="700">
+
+    <ellipse cx="300" cy="200" rx="100" ry="40"
+             style="fill:white;stroke:purple;stroke-width:2"  />
+    <ellipse cx="300" cy="100" rx="100" ry="40"
+             style="fill:white;stroke:purple;stroke-width:2"  />
+    <line x1="200" y1="100" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+    <line x1="400" y1="100" x2="400" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+</svg>
+<p><b>ROZWIĄZANIE</b></p>
+
+<math xmlns = "http://www.w3.org/1998/Math/MathML">
+    <mrow>
+        <mn>V</mn>
+        <mo>=</mo>
+        <mrow>
+            <mn>&pi;</mn>
+            <mo>*</mo>
+            <msup> <mi>r</mi> <mn>2</mn> </msup>
+            <mo>*</mo>
+            <mn>H</mn>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+            <mn id="math1">314</mn>
+            <mo>*</mo>
+            <mn id="math2">10</mn>
+        </mrow>
+        <mo>=</mo>
+        <mn id="math3">3104</mn>
+    </mrow>
+</math>
+</body>
+</html>
+
+
